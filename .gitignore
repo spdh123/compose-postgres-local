@@ -1,0 +1,6 @@
+# Folder
+pgadmin/
+postgres/
+
+# Environments
+.env

@@ -7,7 +7,9 @@
 
 ## Quick Start
 * Clone or download this repository
-* Go inside of directory,  `cd compose-postgres`
+* Go inside of directory,  `cd compose-postgres-local`
+* `mkdir postgres pgadmin`
+* `cp .env.example .env`
 * Run this command `docker-compose up -d`
 
 

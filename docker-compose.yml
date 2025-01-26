@@ -4,6 +4,8 @@ services:
   postgres:
     container_name: postgres_container
     image: postgres
+    env_file:
+      - .env 
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-changeme}
@@ -19,6 +21,8 @@ services:
   pgadmin:
     container_name: pgadmin_container
     image: dpage/pgadmin4
+    env_file:
+      - .env 
     environment:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
@@ -36,6 +40,22 @@ networks:
   postgres:
     driver: bridge
 
+# volumes:
+#     postgres:
+#     pgadmin:
+
+
 volumes:
-    postgres:
-    pgadmin:
+  postgres:
+    driver: local
+    driver_opts:
+      type: none
+      # device: /Volumes/D/Code/postgres/compose-postgres-local/postgres
+      device: ./postgres
+      o: bind
+  pgadmin:
+    driver: local
+    driver_opts:
+      type: none
+      device: ./pgadmin
+      o: bind
