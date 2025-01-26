@@ -40,17 +40,11 @@ networks:
   postgres:
     driver: bridge
 
-# volumes:
-#     postgres:
-#     pgadmin:
-
-
 volumes:
   postgres:
     driver: local
     driver_opts:
       type: none
-      # device: /Volumes/D/Code/postgres/compose-postgres-local/postgres
       device: ./postgres
       o: bind
   pgadmin:
